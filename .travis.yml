@@ -10,3 +10,4 @@ deploy:
     branch: master
     rvm: 2.2.2
   skip_cleanup: true
+  rvm: 2.2.2
