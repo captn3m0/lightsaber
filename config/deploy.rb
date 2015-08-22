@@ -29,26 +29,23 @@ task :environment do
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
   invoke :'rvm:use[default]'
 
-  # For those using RVM, use this to load an RVM version@gemset.
-  # invoke :'rvm:use[ruby-1.9.3-p125@default]'
+  # Make sure that the ssh key is available
+  if ENV['CI'] === 'true'
+    queue "openssl aes-256-cbc -K $encrypted_82a37ece568a_key -iv $encrypted_82a37ece568a_iv -in deploy-rsa -out lightsaber-deploy -d"
+    queue "chmod 600 lightsaber-deploy"
+  end
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
 task :setup => :environment do
-
+  queue "cd ~/lightsaber/current"
+  queue "bundle exec thin -C config.yml start"
 end
 
 desc "Deploys the current version to the server."
 task :deploy => :environment do
-  to :before_hook do
-    # Don't try to decrypt it locally
-    if ENV['CI'] === 'true'
-      queue "openssl aes-256-cbc -K $encrypted_82a37ece568a_key -iv $encrypted_82a37ece568a_iv -in deploy-rsa -out lightsaber-deploy -d"
-      queue "chmod 600 lightsaber-deploy"
-    end
-  end
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
@@ -56,13 +53,8 @@ task :deploy => :environment do
     invoke :'bundle:install'
 
     to :launch do
-      if File.exists?('/tmp/lightsaber.pid')
-        queue! "bundle exec thin -C config.yml stop"
-        queue! "rm /tmp/lightsaber.pid"
-        queue! "bundle exec thin -C config.yml start"
-      else
-        queue "bundle exec thin -C config.yml start"
-      end
+        queue "echo Restarting thin server"
+        queue! "bundle exec thin -C config.yml restart"
     end
   end
 end
