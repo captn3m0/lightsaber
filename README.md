@@ -1,4 +1,4 @@
-# lightsaber
+# lightsaber [![Build Status](https://travis-ci.org/captn3m0/lightsaber.svg)](https://travis-ci.org/captn3m0/lightsaber)
 
 Lightsaber is a simple DNS Redirect service. It offers 301/302 redirects for
 your domains. The configuration is kept public on this github repository itself.

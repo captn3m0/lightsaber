@@ -1,4 +1,14 @@
-301:
-  github.captnemo.in: https://github.com/captn3m0
-302:
-  fb.captnemo.in: https://facebook.com/captn3m0
+---
+ environment: production
+ chdir: /home/lightsaber/lightsaber
+ address: 127.0.0.1
+ user: lightsaber
+ group: lightsaber
+ port: 4567
+ pid: /tmp/lightsaber.pid
+ rackup: /home/lightsaber/lightsaber/config.ru
+ log: /home/lightsaber/lightsaber/thin.log
+ max_conns: 1024
+ timeout: 5
+ max_persistent_conns: 256
+ daemonize: true

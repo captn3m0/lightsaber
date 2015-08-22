@@ -2,4 +2,11 @@ source "https://rubygems.org"
 ruby '2.2.2'
 
 gem 'sinatra'
-gem 'minitest'
+
+group :test do
+  gem 'minitest'
+end
+
+group :production do
+  gem 'thin'
+end

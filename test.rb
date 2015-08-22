@@ -4,14 +4,14 @@ require 'yaml'
 require 'pp'
 
 class TestConfig < Minitest::Test
-  REDIRECTS = ['301', '302']
+  REDIRECTS = [301, 302]
   def setup
-    @config = YAML::load_file 'config.yml'
+    @config = YAML::load_file 'redirects.yml'
   end
 
   def test_redirect_sections
-    @config.each do |section, zone|
-      assert REDIRECTS.include? section.to_s
+    @config.each do |code, zone|
+      assert REDIRECTS.include? code
     end
   end
 
@@ -25,7 +25,7 @@ class TestConfig < Minitest::Test
   end
 
   def resolves_to_lightsaber(domain)
-    flag = false
+    flag = domain === "lightsaber.captnemo.in"
     Resolv::DNS.open do |dns|
       records = dns.getresources domain, Resolv::DNS::Resource::IN::CNAME
       records.each do |record|
