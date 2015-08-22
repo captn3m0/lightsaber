@@ -46,6 +46,7 @@ task :deploy => :environment do
     # Don't try to decrypt it locally
     if ENV['CI'] === 'true'
       queue "openssl aes-256-cbc -K $encrypted_82a37ece568a_key -iv $encrypted_82a37ece568a_iv -in deploy-rsa -out lightsaber-deploy -d"
+      queue "chmod 600 lightsaber-deploy"
     end
   end
   deploy do
