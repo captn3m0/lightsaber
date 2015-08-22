@@ -27,7 +27,6 @@ set :rvm_path, "$HOME/.rvm/scripts/rvm"
 task :environment do
   # If you're using rbenv, use this to load the rbenv environment.
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-  queue! "whoami"
   invoke :'rvm:use[default]'
 
   # For those using RVM, use this to load an RVM version@gemset.
