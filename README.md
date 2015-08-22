@@ -10,7 +10,7 @@ To add a DNS record, point your domain via a CNAME entry to `lightsaber.captnemo
 Next, you will need to do the following:
 
 1. Fork this repo
-2. Edit the config.yml file and add your redirect in the relevant section
+2. Edit the redirects.yml file and add your redirect in the relevant section
 3. File a Pull Request with your edit
 
 Once the Pull Request is approved, the redirect will automatically be deployed
