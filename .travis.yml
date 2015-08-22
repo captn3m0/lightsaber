@@ -5,9 +5,7 @@ script: ruby test.rb
 deploy:
   edge: true
   provider: script
-  script: bundle exec mina deploy --verbose
+  script: deploy.sh
   on:
     branch: master
     rvm: 2.2.2
-  skip_cleanup: true
-  rvm: 2.2.2
