@@ -4,6 +4,6 @@ rvm:
 script: ruby test.rb
 deploy:
   provider: script
-  script: bundle exec mina deploy
+  script: bundle exec mina deploy --verbose
   on:
     branch: master
