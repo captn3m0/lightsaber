@@ -56,7 +56,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
 
     to :launch do
-      if File.exists?('thin.pid')
+      if File.exists?('/tmp/lightsaber.pid')
         queue "bundle exec thin -C config.yml restart"
       else
         queue "bundle exec thin -C config.yml start"
