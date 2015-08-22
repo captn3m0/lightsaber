@@ -1,4 +1,4 @@
 #!/bin/bash
-
-bundle install
-bundle exec mina deploy
+gem install bundler
+bundle install --verbose
+bundle exec mina deploy --verbose

@@ -5,7 +5,7 @@ script: ruby test.rb
 deploy:
   edge: true
   provider: script
-  script: deploy.sh
+  script: bash deploy.sh
   on:
     branch: master
     rvm: 2.2.2
