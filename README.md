@@ -7,6 +7,19 @@ your domains. The configuration is kept public on this github repository itself.
 
 To add a DNS record, point your domain via a CNAME entry to `lightsaber.captnemo.in`.
 
+You can also have fallthrough domain redirects
+(thanks to @vivekprakash for the suggestion), by making the redirect a hash
+with a `root` key set to the url prefix.
+
+```yaml
+# This is a fallthrough redirect
+# so t.co/ev would redirect to twitter.com/ev
+t.co:
+  root: https://twitter.com
+# All goo.gl routes will forward to google.com, and not use fallthrough
+goo.gl: https://google.com
+```
+
 Next, you will need to do the following:
 
 1. Fork this repo

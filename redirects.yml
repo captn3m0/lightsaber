@@ -1,6 +1,9 @@
 ---
 301:
-  github.captnemo.in: https://github.com/captn3m0
+  # This is the base root for all requests
+  # github.captnemo.in/lightsaber => github.com/captn3m0/lightsaber
+  github.captnemo.in:
+    root: https://github.com/captn3m0
   lightsaber.captnemo.in: https://github.com/captn3m0/lightsaber
 302:
   fb.captnemo.in: https://facebook.com/captn3m0
