@@ -1,10 +1,12 @@
 language: ruby
 rvm:
-- 2.2.2
+  - 2.2.2
 script: ruby test.rb
 deploy:
+  edge: true
   provider: script
   script: bundle exec mina deploy --verbose
   on:
     branch: master
+    rvm: 2.2.2
   skip_cleanup: true
