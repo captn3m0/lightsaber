@@ -5,7 +5,10 @@
   github.captnemo.in:
     root: https://github.com/captn3m0
   lightsaber.captnemo.in: https://github.com/captn3m0/lightsaber
-  xyz.captnemo.in: https://abc.xyz
   chat.hackercouch.com: https://webchat.freenode.net/?channels=hackercouch
+  dev-s.captnemo.in: https://slackipy-codetogether.rhcloud.com/
+  twitter.captnemo.in: https://twitter.com/captn3m0
+  about.captnemo.in: https://about.me/n3m0
+  books.captnemo.in: https://goodreads.com/user/show/6170741-abhay-rana
 302:
   fb.captnemo.in: https://facebook.com/captn3m0
