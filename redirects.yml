@@ -14,6 +14,7 @@
   blog.razorpay.com:
     root: https://razorpay.com/blog
   maker.rzp.io: http://www.paulgraham.com/makersschedule.html
+  pi.captnemo.in: http://tatooi.ne:8000/
 302:
   fb.captnemo.in: https://facebook.com/captn3m0
   where.rzp.io: https://goo.gl/maps/1A9nhMPzehS2
