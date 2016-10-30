@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://yegor256.github.io/tacit/tacit.min.css"/>
+  </head>
+  <body>
+    <section>
+      <header>
+        <nav>
+          <ul>
+            <li><code><h2>lightsaber</h2></code></li>
+          </ul>
+        </nav>
+      </header>
+      <article>
+        <h3>Encryption</h3>
+        <p>You can find more about lightsaber at
+          <a href="https://lightsaber.captnemo.in">lightsaber.captnemo.in</a>.
+        </p>
+        <p>This page exists to help you with the encryption</p>
+        <form action="/lightsaber/encrypt" method="post">
+          <fieldset>
+            <label for="domain">
+              Domain to redirect
+              <input type="text" name="domain" size="60" placeholder="code.captnemo.in">
+            </label>
+
+            <label for="status">
+              Redirect Type:
+              <select name="status">
+                <option value="301">Permanent (301)</option>
+                <option value="302">Temporary (302)</option>
+              </select>
+            </label>
+
+            <h3>You must fill either the Redirect URL or the Root</h3>
+            <label for="redirect_url">
+              Redirect URL (Must be a link)
+              <input type="url" name="redirect_url" size="60" placeholder="https://github.com/captn3m0">
+            </label>
+
+
+            <label for="root">
+              Optional Root:
+              <input type="text" name="root" size="60" placeholder="https://github.com/captn3m0">
+              <span>No leading slash needed</span>
+            </label>
+
+            <input type="submit" value="Submit">
+          </fieldset>
+        </form>
+      </article>
+    </section>
+  </body>
+</html>
