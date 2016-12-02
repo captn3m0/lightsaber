@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'uri'
-require 'rack/response'
+require 'rack'
 require 'dnsruby'
 
 # This is the class that resolves a given URL
