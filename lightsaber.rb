@@ -1,5 +1,7 @@
+require 'rubygems'
 require 'uri'
 require 'rack/response'
+require 'dnsruby'
 
 # This is the class that resolves a given URL
 # to what we need to redirect to
@@ -17,21 +19,31 @@ class Lightsaber
     end
   end
 
-  def get_response_from_yml
-    res = Rack::Response.new
+  def get_response_from_dns (host)
 
-    YAML::load_file('redirects.yml').each do |code, zone|
-      if zone.has_key? @url.host.to_s
-        url = get_url(zone[@url.host], @url.path)
-        if url
-          res.redirect url, code
-        else
-          res.status = 400
-          res.body = "Invalid configuration for #{@url.host}"
+    res = not_setup_response
+
+    ret = Dnsruby::Resolver.new.query("_redirect.#{host}", 'TXT')
+    ret.answer.rrsets.each do |rrset|
+      rrset.rrs.each do |rr|
+        if is_valid_lightsaber_record? rr.data
+          url = get_redirect_from_dns_record rr.data
+          if url =~ /\A#{URI::regexp}\z/
+            res = Rack::Response.new
+            res.redirect url
+          end
         end
-        return res
       end
     end
+    res
+  end
+
+  def get_redirect_from_dns_record(data)
+    data[6..-1]
+  end
+
+  def is_valid_lightsaber_record? (data)
+    data[0..5] === 'v=lr1;'
   end
 
   def not_setup_response
@@ -42,10 +54,6 @@ class Lightsaber
 
 
   def get_response
-
-    yml_res = get_response_from_yml
-    return yml_res unless yml_res.nil?
-
-    not_setup_response
+    get_response_from_dns @url.host
   end
 end

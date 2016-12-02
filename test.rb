@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'resolv'
 require 'yaml'
 require 'pp'
+require_relative './lightsaber'
 
 class TestConfig < Minitest::Test
   REDIRECTS = [301, 302]
@@ -13,6 +14,11 @@ class TestConfig < Minitest::Test
     @config.each do |code, zone|
       assert REDIRECTS.include? code
     end
+  end
+
+  def test_txt_record
+    saber = Lightsaber.new 'http://localhost:9292/test'
+    pp saber.get_response_from_dns 'captnemo.in'
   end
 
   def test_each_domain

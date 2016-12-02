@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem 'sinatra'
-
+gem 'dnsruby'
 group :test do
   gem 'minitest'
   gem 'mina'
