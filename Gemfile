@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem 'sinatra'
 gem 'dnsruby'
+gem 'rack'
 group :test do
   gem 'minitest'
   gem 'mina'
