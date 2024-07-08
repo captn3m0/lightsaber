@@ -3,7 +3,7 @@
 Lightsaber is a simple DNS Redirect service. It offers 301/302 redirects for
 your domains. The configuration is kept public on this github repository itself.
 
-*NOTE*: This is no longer maintained. If you require a simple DNS Redirect service, I highly recommend checking <https://about.txtdirect.org/>, which is a open specification based DNS Redirect service that stores the configuration in your DNS.
+*NOTE*: This is no longer maintained. If you require a simple DNS Redirect service, I highly recommend checking <https://about.txtdirect.org/>, which is a open specification based DNS Redirect service that stores the configuration in your DNS. I switched to configuring my redirects in Netlify instead: https://github.com/captn3m0/redirects
 
 ## Usage
 
